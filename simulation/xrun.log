@@ -1,0 +1,123 @@
+xrun(64): 20.09-s012: (c) Copyright 1995-2021 Cadence Design Systems, Inc.
+TOOL:	xrun(64)	20.09-s012: Started on Nov 14, 2026 at 11:48:38 IST
+xrun
+	decoder.sv
+	tb.sv
+	-access +rwc
+	-gui
+xmsim: *W,DSEM2009: This SystemVerilog design is simulated as per IEEE 1800-2009 SystemVerilog simulation semantics. Use -disable_sem2009 option for turning off SV 2009 simulation semantics.
+
+-------------------------------------
+Relinquished control to SimVision...
+xcelium> 
+xcelium> source /home/install/cadence/XCELIUM2009/tools/xcelium/files/xmsimrc
+xcelium> database -open waves -into waves.shm -default
+Created default SHM database waves
+xcelium> probe -create -shm tb.rdata_b_o tb.alu_operator_o tb.alu_result_o tb.clk tb.instr tb.rdata_a_o tb.rf_we_o tb.rst tb.wb_from_alu_i tb.wdata_i
+Created probe 1
+xcelium> run
+
+****************************************
+*          RESET COMPLETED             *
+****************************************
+x1 = 10 -> WRITE PASSED
+x2 = 20 -> WRITE PASSED
+
+REGISTER READ TEST
+Read x1 = 10
+Read x2 = 20
+REGISTER READ -> PASSED
+
+================================================
+: ADD x5, x1, x2
+================================================
+Instruction = 002082b3
+rs1 address = 1
+rs2 address = 2
+rd address  = 5
+Operand A   = 10
+Operand B   = 20
+ALU Operation = ADD
+ALU Result       = 30
+RF Write Enable  = 1
+Write-back Data  = 30
+ADD RESULT -> PASSED
+x5 = 30 -> WRITE-BACK PASSED
+
+================================================
+: SUB x6, x2, x1
+================================================
+Instruction = 40110333
+rs1 address = 2
+rs2 address = 1
+rd address  = 6
+Operand A   = 20
+Operand B   = 10
+ALU Operation = SUB
+ALU Result       = 10
+RF Write Enable  = 1
+Write-back Data  = 10
+SUB RESULT -> PASSED
+x6 = 10 -> WRITE-BACK PASSED
+
+================================================
+: AND x7, x1, x2
+================================================
+Instruction = 0020f3b3
+rs1 address = 1
+rs2 address = 2
+rd address  = 7
+Operand A   = 10
+Operand B   = 20
+ALU Operation = AND
+ALU Result       = 0
+RF Write Enable  = 1
+Write-back Data  = 0
+AND RESULT -> PASSED
+x7 = 0 -> WRITE-BACK PASSED
+
+================================================
+ : OR x8, x1, x2
+================================================
+Instruction = 0020e433
+rs1 address = 1
+rs2 address = 2
+rd address  = 8
+Operand A   = 10
+Operand B   = 20
+ALU Operation = OR
+ALU Result       = 30
+RF Write Enable  = 1
+Write-back Data  = 30
+OR RESULT -> PASSED
+x8 = 30 -> WRITE-BACK PASSED
+
+================================================
+: XOR x9, x1, x2
+================================================
+Instruction = 0020c4b3
+rs1 address = 1
+rs2 address = 2
+rd address  = 9
+Operand A   = 10
+Operand B   = 20
+ALU Operation = XOR
+ALU Result       = 30
+RF Write Enable  = 1
+Write-back Data  = 30
+XOR RESULT -> PASSED
+x9 = 30 -> WRITE-BACK PASSED
+
+****************************************
+*             x0 TEST                  *
+****************************************
+x0 = 0 -> PASSED
+
+****************************************
+*       ALL TESTS COMPLETED            *
+****************************************
+Simulation complete via $finish(1) at time 86 NS + 0
+./tb.sv:455         $finish;
+xcelium> ^C
+xcelium> exit
+TOOL:	xrun(64)	20.09-s012: Exiting on Nov 14, 2026 at 11:58:56 IST  (total: 00:10:18)
