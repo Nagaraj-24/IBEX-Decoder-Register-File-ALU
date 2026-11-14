@@ -1,0 +1,58 @@
+# Cadence Genus(TM) Synthesis Solution, Version 20.11-s111_1, built Apr 26 2021 14:57:38
+
+# Date: Sat Nov 14 13:31:55 2026
+# Host: c2sgpr040.cambridge.edu.in (x86_64 w/Linux 3.10.0-1160.el7.x86_64) (8cores*8cpus*1physical cpu*Intel(R) Core(TM) i7-9700 CPU @ 3.00GHz 12288KB)
+# OS:   Red Hat Enterprise Linux Server release 7.9 (Maipo)
+
+ls
+source <script_name.tcl>
+ls ..
+find ~ -maxdepth 3 -name "*.v" -o -name "*.lib" -o -name "*.tcl" 2>/dev/null
+ls ../simulation
+00ls /home/install
+ls /home/install/cadence
+ls /home/install
+ls /home/install/cadence
+exec cat genus.cmd1
+exec sh -c {find -L /opt/sclpdkv3/scl180/pdk -type f -name "*.lib" | grep -Ei "ts018|scl|ss|tt|ff" | head -10}
+read_libs /opt/sclpdkv3/scl180/pdk/<exact_path_from_step_1>.lib
+read_hdl -sv ../simulation/decoder.sv
+elaborate decoder_register_file
+exec sh -c {find -L /opt/sclpdkv3/scl180 -type f -iname "*.lib" -print 2>/dev/null | grep -vi "hspice" | grep -vi "iopad" | grep -Ei "ts18|scl" | head -20}
+read_libs /opt/sclpdkv3/scl180/.../ts18sl_scl_ss_1p62v_125c.lib
+exec sh -c {find -L /opt/sclpdkv3/scl180 -type f -iname "*ts018_scl_prim*.lib" 2>/dev/null}
+read_libs <paste_the_real_full_path_printed_in_step_1_here>
+set LIB_FILE [exec sh -c {find -L /opt/sclpdkv3/scl180 /home/AT_12/projects -type f -iname "*.lib" 2>/dev/null | grep -viE "hspice|memory|spram|iopad|assura|pvtech|project\.lib" | grep -iE "liberty|timing|ss|tt|ff|prim|scl" | head -1}]
+puts "FOUND LIBRARY: $LIB_FILE"
+read_libs $LIB_FILE
+elaborate decoder_register_file
+check_design -unresolved
+syn_generic
+syn_map
+syn_opt
+report_area > area.rpt
+report_timing > timing.rpt
+report_power > power.rpt
+write_hdl > decoder_register_file_netlist.v
+ls
+exec cat area.rpt
+exec cat timing.rpt
+exec cat power.rpt
+exec head -30 ../simulation/decoder.sv
+exec grep -A 20 "module decoder_register_file" ../simulation/decoder.sv
+create_clock -name core_clk -period 10 [get_ports clk]
+set_input_delay 1.0 -clock core_clk [remove_from_collection [all_inputs] [get_ports clk]]
+set_output_delay 1.0 -clock core_clk [all_outputs]
+syn_map
+syn_opt
+report_timing > timing.rpt
+report_area > area.rpt
+report_power > power.rpt
+write_hdl > decoder_register_file_netlist.v
+write_sdc > decoder_register_file.sdc
+exec cat timing.rpt
+report_area > area.rpt
+report_power > power.rpt
+write_hdl > decoder_register_file_netlist.v
+write_sdc > decoder_register_file.sdc
+exit

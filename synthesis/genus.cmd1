@@ -1,0 +1,30 @@
+# Cadence Genus(TM) Synthesis Solution, Version 20.11-s111_1, built Apr 26 2021 14:57:38
+
+# Date: Sat Nov 14 12:04:10 2026
+# Host: c2sgpr040.cambridge.edu.in (x86_64 w/Linux 3.10.0-1160.el7.x86_64) (8cores*8cpus*1physical cpu*Intel(R) Core(TM) i7-9700 CPU @ 3.00GHz 12288KB)
+# OS:   Red Hat Enterprise Linux Server release 7.9 (Maipo)
+
+pwd
+exec ls -l
+exec ls -l ../simulation
+read_hdl -sv ../simulation/decoder.sv
+elaborate decoder_register_file
+check_design -unresolved
+exec find /home/AT_12 -type f -name "*.lib" 2>/dev/null
+exec head -20 /home/AT_12/projects/CIT_12/work_libs/AT_12/cds/assura_tech.lib
+exec head -20 /home/AT_12/projects/CIT_12/work_libs/AT_12/cds/pvtech.lib
+exec head -20 /home/AT_12/projects/CIT_12/cds_master/project.lib
+exec find /home/AT_12/projects/CIT_12 -type f \( -name "*.lib" -o -name "*.lib.gz" \) 2>/dev/null
+exec printenv RDS_ROOT
+exec ls -l /home/AT_12/projects/CIT_12/cds_master/SCLSL18_6M1L/ts018_scl_prim
+exec find /home/AT_12/projects/CIT_12/cds_master -type f \( -name "*.lib" -o -name "*.lib.gz" \) 2>/dev/null
+exec find -L /opt/sclpdkv3/scl180/pdk -type f \( -iname "*.lib" -o -iname "*.lib.gz" \) 2>/dev/null | head -50
+exec find -L /opt/sclpdkv3/scl180/pdk -type f -name "*.lib" -exec grep -Il "library[[:space:]]*(" {} \; 2>/dev/null | head -30
+exec sh -c {find -L /opt/sclpdkv3/scl180/pdk -type f -name "*.lib" -print 2>/dev/null | head -50}
+exec sh -c {find -L /opt/sclpdkv3/scl180/pdk -type f -iname "*.lib" ! -path "*/hspice/*" ! -path "*/models/*" 2>/dev/null | head -40}
+exec sh -c {find -L /opt/sclpdkv3/scl180/pdk -type f \( -iname "*.lib" -o -iname "*.lib.gz" -o -iname "*.db" \) ! -path "*/hspice/*" ! -path "*/etc/*" -print 2>/dev/null | head -60}
+exec sh -c {find -L /opt/sclpdkv3/scl180/pdk -type f -name "*.lib" -exec grep -l "cell[[:space:]]*(" {} \; 2>/dev/null | head -30}
+exec sh -c {find -L /opt/sclpdkv3/scl180/pdk -type f -name "*.lib" -exec grep -l "cell[[:space:]]*(" {} \; 2>/dev/null | head -30}
+exec sh -c {find -L /opt/sclpdkv3/scl180/pdk -type f -iname "*.lib" 2>/dev/null | grep -vi hspice | head -50}
+exec sh -c {find -L /opt/sclpdkv3/scl180 -type f \( -iname "*.lib" -o -iname "*.lib.gz" -o -iname "*.db" \) -print 2>/dev/null | grep -Ei 'ts18|slow|typ|fast|liberty|scl' | head -80}
+exec sh -c {find -L /opt/sclpdkv3/scl180 -type f -iname "*.lib" -print 2>/dev/null | grep -vi "/iopad/" | grep -Ei "ts18|scl" | head -60}

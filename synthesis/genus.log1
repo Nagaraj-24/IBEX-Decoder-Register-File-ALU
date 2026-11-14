@@ -1,0 +1,383 @@
+Cadence Genus(TM) Synthesis Solution.
+Copyright 2021 Cadence Design Systems, Inc. All rights reserved worldwide.
+Cadence and the Cadence logo are registered trademarks and Genus is a trademark
+of Cadence Design Systems, Inc. in the United States and other countries.
+
+Version: 20.11-s111_1, built Mon Apr 26 02:27:38 PDT 2021
+Options: 
+Date:    Sat Nov 14 12:04:10 2026
+Host:    c2sgpr040.cambridge.edu.in (x86_64 w/Linux 3.10.0-1160.el7.x86_64) (8cores*8cpus*1physical cpu*Intel(R) Core(TM) i7-9700 CPU @ 3.00GHz 12288KB) (16130388KB)
+PID:     10167
+OS:      Red Hat Enterprise Linux Server release 7.9 (Maipo)
+
+Checking out license: Genus_Synthesis
+
+
+***********************************************************************************************************
+***********************************************************************************************************
+
+
+
+Loading tool scripts...
+Finished loading tool scripts (11 seconds elapsed).
+
+WARNING: This version of the tool is 2027 days old.
+@genus:root: 1> pwd
+/home/AT_12/digital_design/synthesis
+@genus:root: 2> exec ls -l
+total 16
+-rw-rw-r--. 1 AT_12 AT_12  341 Nov 14 12:02 genus.cmd
+-rw-rw-r--. 1 AT_12 AT_12  351 Nov 14 12:04 genus.cmd1
+-rw-rw-r--. 1 AT_12 AT_12 1033 Nov 14 12:02 genus.log
+-rw-rw-r--. 1 AT_12 AT_12 1085 Nov 14 12:04 genus.log1
+@genus:root: 3> exec ls -l ../simulation
+total 44
+-rw-rw-r--. 1 AT_12 AT_12  7388 Nov 14 10:43 decoder.sv
+-rw-rw-r--. 1 AT_12 AT_12  7019 Nov 14 11:49 decoder_register_file.vcd
+-rw-rw-r--. 1 AT_12 AT_12  2912 Nov 14 11:15 simvision2490.diag
+-rw-rw-r--. 1 AT_12 AT_12 10905 Nov 14 11:20 tb.sv
+drwxrwxr-x. 2 AT_12 AT_12    40 Nov 14 11:49 waves.shm
+drwxrwxr-x. 4 AT_12 AT_12   114 Nov 14 11:48 xcelium.d
+drwxrwxr-x. 2 AT_12 AT_12    86 Nov 14 11:46 xcelium.shm
+-rw-rw-r--. 1 AT_12 AT_12   394 Nov 14 11:48 xrun.history
+-rw-rw-r--. 1 AT_12 AT_12   196 Nov 14 11:58 xrun.key
+-rw-rw-r--. 1 AT_12 AT_12  3286 Nov 14 11:58 xrun.log
+@genus:root: 4> read_hdl -sv ../simulation/decoder.sv
+@genus:root: 5> elaborate decoder_register_file
+Error   : Failed to execute command. [LBR-163] [elaborate]
+        : No target technology library was loaded.
+        : Specify libraries using read_libs or read_mmmc.
+UM:   flow.cputime  flow.realtime  timing.setup.tns  timing.setup.wns  snapshot
+UM:*                                                                   elaborate
+1
+@genus:root: 6> check_design -unresolved
+Error   : No designs are available. A design must first be read in and elaborated. [TUI-10] [check_design]
+        : There is no design here.
+        : A design must first be read in with 'read_hdl' command and elaborated with 'elaborate' command.
+Failed on check_design
+@genus:root: 7> exec find /home/AT_12 -type f -name "*.lib" 2>/dev/null
+/home/AT_12/projects/CIT_12/work_libs/AT_12/cds/cds.lib
+/home/AT_12/projects/CIT_12/work_libs/AT_12/cds/assura_tech.lib
+/home/AT_12/projects/CIT_12/work_libs/AT_12/cds/pvtech.lib
+/home/AT_12/projects/CIT_12/cds_master/project.lib
+/home/AT_12/cds.lib
+/home/AT_12/digital_design/simulation/xcelium.d/run.lnx8664.20.09.d/cdsrun.lib
+/home/AT_12/digital_design/simulation/xcelium.d/run.lnx8664.20.09.d/c2sgpr040.cambridge.edu.in_2429_cdsrun.lib
+/home/AT_12/digital_design/simulation/xcelium.d/run.lnx8664.20.09.d/cds.lib
+/home/AT_12/digital_design/simulation/xcelium.d/run.lnx8664.20.09.d/c2sgpr040.cambridge.edu.in_5825_cdsrun.lib
+/home/AT_12/digital_design/simulation/xcelium.d/run.lnx8664.20.09.d/c2sgpr040.cambridge.edu.in_6660_cdsrun.lib
+/home/AT_12/digital_design/simulation/xcelium.d/run.lnx8664.20.09.d/c2sgpr040.cambridge.edu.in_7524_cdsrun.lib
+/home/AT_12/digital_design/simulation/xcelium.d/run.lnx8664.20.09.d/c2sgpr040.cambridge.edu.in_8505_cdsrun.lib
+@genus:root: 8> exec head -20 /home/AT_12/projects/CIT_12/work_libs/AT_12/cds/assura_tech.lib
+# User assura_tech.lib for User AT_12 and Project CIT_12 
+
+DEFINE ts18scl_6M1L $RDS_ROOT/techs/ts18scl_6M1L/assura/default_scr 
+@genus:root: 9> exec head -20 /home/AT_12/projects/CIT_12/work_libs/AT_12/cds/pvtech.lib
+# User pvtech.lib for User AT_12 and Project CIT_12 
+
+DEFINE ts18scl_6M1L $RDS_ROOT/techs/ts18scl_6M1L/pvs/default_scr 
+@genus:root: 10> exec head -20 /home/AT_12/projects/CIT_12/cds_master/project.lib
+# project.lib for Project CIT_12 
+
+DEFINE CIT_12_master  /home/AT_12/projects/CIT_12/cds_master/design  
+
+INCLUDE $RDS_CDS_LIB_VERS
+
+UNDEFINE ts018_scl_prim
+DEFINE ts018_scl_prim /home/AT_12/projects/CIT_12/cds_master/SCLSL18_6M1L/ts018_scl_prim
+@genus:root: 11> exec find /home/AT_12/projects/CIT_12 -type f \( -name "*.lib" -o -name "*.lib.gz" \) 2>/dev/null
+/home/AT_12/projects/CIT_12/work_libs/AT_12/cds/cds.lib
+/home/AT_12/projects/CIT_12/work_libs/AT_12/cds/assura_tech.lib
+/home/AT_12/projects/CIT_12/work_libs/AT_12/cds/pvtech.lib
+/home/AT_12/projects/CIT_12/cds_master/project.lib
+@genus:root: 12> exec printenv RDS_ROOT
+child process exited abnormally
+@genus:root: 13> exec ls -l /home/AT_12/projects/CIT_12/cds_master/SCLSL18_6M1L/ts018_scl_prim
+total 0
+lrwxrwxrwx. 1 AT_12 AT_12 134 Oct 14 15:13 cdlNetlist.header -> /opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3//HOTCODE/amslibs/cds_default/cdslibs/ts18scl/devices/devices_oa_ts18scl_6M1L/cdlNetlist.header
+lrwxrwxrwx. 1 AT_12 AT_12 128 Oct 14 15:13 cdsinfo.tag -> /opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3//HOTCODE/amslibs/cds_default/cdslibs/ts18scl/devices/devices_oa_ts18scl_6M1L/cdsinfo.tag
+lrwxrwxrwx. 1 AT_12 AT_12 122 Oct 14 15:13 ch53t -> /opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3//HOTCODE/amslibs/cds_default/cdslibs/ts18scl/devices/devices_oa_ts18scl_6M1L/ch53t
+lrwxrwxrwx. 1 AT_12 AT_12 132 Oct 14 15:13 ciProspector.il -> /opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3//HOTCODE/amslibs/cds_default/cdslibs/ts18scl/devices/devices_oa_ts18scl_6M1L/ciProspector.il
+lrwxrwxrwx. 1 AT_12 AT_12 124 Oct 14 15:13 cmim_sq -> /opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3//HOTCODE/amslibs/cds_default/cdslibs/ts18scl/devices/devices_oa_ts18scl_6M1L/cmim_sq
+lrwxrwxrwx. 1 AT_12 AT_12 130 Oct 14 15:13 cnwnmos_thk2t -> /opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3//HOTCODE/amslibs/cds_default/cdslibs/ts18scl/devices/devices_oa_ts18scl_6M1L/cnwnmos_thk2t
+lrwxrwxrwx. 1 AT_12 AT_12 130 Oct 14 15:13 cnwnmos_thk3t -> /opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3//HOTCODE/amslibs/cds_default/cdslibs/ts18scl/devices/devices_oa_ts18scl_6M1L/cnwnmos_thk3t
+lrwxrwxrwx. 1 AT_12 AT_12 130 Oct 14 15:13 cnwnmos_thn2t -> /opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3//HOTCODE/amslibs/cds_default/cdslibs/ts18scl/devices/devices_oa_ts18scl_6M1L/cnwnmos_thn2t
+lrwxrwxrwx. 1 AT_12 AT_12 132 Oct 14 15:13 customFilter.il -> /opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3//HOTCODE/amslibs/cds_default/cdslibs/ts18scl/devices/devices_oa_ts18scl_6M1L/customFilter.il
+lrwxrwxrwx. 1 AT_12 AT_12 124 Oct 14 15:13 data.dm -> /opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3//HOTCODE/amslibs/cds_default/cdslibs/ts18scl/devices/devices_oa_ts18scl_6M1L/data.dm
+lrwxrwxrwx. 1 AT_12 AT_12 125 Oct 14 15:13 ddwnps18 -> /opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3//HOTCODE/amslibs/cds_default/cdslibs/ts18scl/devices/devices_oa_ts18scl_6M1L/ddwnps18
+lrwxrwxrwx. 1 AT_12 AT_12 125 Oct 14 15:13 ddwnpw18 -> /opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3//HOTCODE/amslibs/cds_default/cdslibs/ts18scl/devices/devices_oa_ts18scl_6M1L/ddwnpw18
+lrwxrwxrwx. 1 AT_12 AT_12 128 Oct 14 15:13 display.drf -> /opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3//HOTCODE/amslibs/cds_default/cdslibs/ts18scl/devices/devices_oa_ts18scl_6M1L/display.drf
+lrwxrwxrwx. 1 AT_12 AT_12 121 Oct 14 15:13 dn50 -> /opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3//HOTCODE/amslibs/cds_default/cdslibs/ts18scl/devices/devices_oa_ts18scl_6M1L/dn50
+lrwxrwxrwx. 1 AT_12 AT_12 121 Oct 14 15:13 dp50 -> /opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3//HOTCODE/amslibs/cds_default/cdslibs/ts18scl/devices/devices_oa_ts18scl_6M1L/dp50
+lrwxrwxrwx. 1 AT_12 AT_12 125 Oct 14 15:13 fuse.Cat -> /opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3//HOTCODE/amslibs/cds_default/cdslibs/ts18scl/devices/devices_oa_ts18scl_6M1L/fuse.Cat
+lrwxrwxrwx. 1 AT_12 AT_12 127 Oct 14 15:13 globals.il -> /opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3//HOTCODE/amslibs/cds_default/cdslibs/ts18scl/devices/devices_oa_ts18scl_6M1L/globals.il
+lrwxrwxrwx. 1 AT_12 AT_12 125 Oct 14 15:13 hv33.Cat -> /opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3//HOTCODE/amslibs/cds_default/cdslibs/ts18scl/devices/devices_oa_ts18scl_6M1L/hv33.Cat
+lrwxrwxrwx. 1 AT_12 AT_12 132 Oct 14 15:13 hv33_diodes.Cat -> /opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3//HOTCODE/amslibs/cds_default/cdslibs/ts18scl/devices/devices_oa_ts18scl_6M1L/hv33_diodes.Cat
+lrwxrwxrwx. 1 AT_12 AT_12 129 Oct 14 15:13 hv33_mos.Cat -> /opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3//HOTCODE/amslibs/cds_default/cdslibs/ts18scl/devices/devices_oa_ts18scl_6M1L/hv33_mos.Cat
+lrwxrwxrwx. 1 AT_12 AT_12 125 Oct 14 15:13 hv50.Cat -> /opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3//HOTCODE/amslibs/cds_default/cdslibs/ts18scl/devices/devices_oa_ts18scl_6M1L/hv50.Cat
+lrwxrwxrwx. 1 AT_12 AT_12 132 Oct 14 15:13 hv50_diodes.Cat -> /opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3//HOTCODE/amslibs/cds_default/cdslibs/ts18scl/devices/devices_oa_ts18scl_6M1L/hv50_diodes.Cat
+lrwx... <result is 19213 characters long and printing is truncated to 4096 characters, use 'puts [command]' to view the entire result>
+@genus:root: 14> exec find /home/AT_12/projects/CIT_12/cds_master -type f \( -name "*.lib" -o -name "*.lib.gz" \) 2>/dev/null
+/home/AT_12/projects/CIT_12/cds_master/project.lib
+@genus:root: 15> 
+@genus:root: 15> exec find -L /opt/sclpdkv3/scl180/pdk -type f \( -iname "*.lib" -o -iname "*.lib.gz" \) 2>/dev/null | head -50
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/models/ts18scl/default/hspice/IO_Pads_Diode.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/models/ts18scl/default/hspice/diode.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/models/ts18scl/default/hspice/accap.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/models/ts18scl/default/hspice/ts18sl_scl_mat.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/models/ts18scl/default/hspice/ts18sl_scl_2019.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/models/ts18scl/default/hspice/ts18sl_scl.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/models/ts18scl/default/hspice/res.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/models/ts18scl/default/hspice/nat.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/models/ts18scl/default/hspice/mimcap.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/models/ts18scl/default/hspice/mfc.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/models/ts18scl/default/hspice/header.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/models/ts18scl/default/hspice/global.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/models/ts18scl/default/hspice/fethv.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/models/ts18scl/default/hspice/fet.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/models/ts18scl/default/hspice/bjt.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/models/ts18scl/v2.0/hspice/IO_Pads_Diode.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/models/ts18scl/v2.0/hspice/diode.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/models/ts18scl/v2.0/hspice/accap.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/models/ts18scl/v2.0/hspice/ts18sl_scl_mat.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/models/ts18scl/v2.0/hspice/ts18sl_scl_2019.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/models/ts18scl/v2.0/hspice/ts18sl_scl.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/models/ts18scl/v2.0/hspice/res.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/models/ts18scl/v2.0/hspice/nat.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/models/ts18scl/v2.0/hspice/mimcap.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/models/ts18scl/v2.0/hspice/mfc.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/models/ts18scl/v2.0/hspice/header.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/models/ts18scl/v2.0/hspice/global.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/models/ts18scl/v2.0/hspice/fethv.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/models/ts18scl/v2.0/hspice/fet.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/models/ts18scl/v2.0/hspice/bjt.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_oa/etc/system.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_oa/etc/templates/project.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_oa/etc/6.1.5/rfde.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_oa/etc/6.1.4/rfde.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_oa/etc/6.1.0/rfde.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_oa/cdslibs/ts18scl/technology.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_oa/cdslibs/ts18scl/models/default/hspice/IO_Pads_Diode.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_oa/cdslibs/ts18scl/models/default/hspice/diode.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_oa/cdslibs/ts18scl/models/default/hspice/accap.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_oa/cdslibs/ts18scl/models/default/hspice/ts18sl_scl_mat.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_oa/cdslibs/ts18scl/models/default/hspice/ts18sl_scl_2019.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_oa/cdslibs/ts18scl/models/default/hspice/ts18sl_scl.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_oa/cdslibs/ts18scl/models/default/hspice/res.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_oa/cdslibs/ts18scl/models/default/hspice/nat.lib
+/opt/sclpdkv3/scl180/pdk/cdn... <result is 4776 characters long and printing is truncated to 4096 characters, use 'puts [command]' to view the entire result>
+@genus:root: 16> exec find -L /opt/sclpdkv3/scl180/pdk -type f -name "*.lib" -exec grep -Il "library[[:space:]]*(" {} \; 2>/dev/null | head -30
+invalid command name ":space:"
+@genus:root: 17> exec sh -c {find -L /opt/sclpdkv3/scl180/pdk -type f -name "*.lib" -print 2>/dev/null | head -50}
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/models/ts18scl/default/hspice/IO_Pads_Diode.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/models/ts18scl/default/hspice/diode.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/models/ts18scl/default/hspice/accap.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/models/ts18scl/default/hspice/ts18sl_scl_mat.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/models/ts18scl/default/hspice/ts18sl_scl_2019.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/models/ts18scl/default/hspice/ts18sl_scl.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/models/ts18scl/default/hspice/res.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/models/ts18scl/default/hspice/nat.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/models/ts18scl/default/hspice/mimcap.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/models/ts18scl/default/hspice/mfc.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/models/ts18scl/default/hspice/header.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/models/ts18scl/default/hspice/global.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/models/ts18scl/default/hspice/fethv.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/models/ts18scl/default/hspice/fet.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/models/ts18scl/default/hspice/bjt.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/models/ts18scl/v2.0/hspice/IO_Pads_Diode.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/models/ts18scl/v2.0/hspice/diode.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/models/ts18scl/v2.0/hspice/accap.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/models/ts18scl/v2.0/hspice/ts18sl_scl_mat.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/models/ts18scl/v2.0/hspice/ts18sl_scl_2019.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/models/ts18scl/v2.0/hspice/ts18sl_scl.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/models/ts18scl/v2.0/hspice/res.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/models/ts18scl/v2.0/hspice/nat.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/models/ts18scl/v2.0/hspice/mimcap.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/models/ts18scl/v2.0/hspice/mfc.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/models/ts18scl/v2.0/hspice/header.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/models/ts18scl/v2.0/hspice/global.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/models/ts18scl/v2.0/hspice/fethv.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/models/ts18scl/v2.0/hspice/fet.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/models/ts18scl/v2.0/hspice/bjt.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_oa/etc/system.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_oa/etc/templates/project.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_oa/etc/6.1.5/rfde.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_oa/etc/6.1.4/rfde.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_oa/etc/6.1.0/rfde.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_oa/cdslibs/ts18scl/technology.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_oa/cdslibs/ts18scl/models/default/hspice/IO_Pads_Diode.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_oa/cdslibs/ts18scl/models/default/hspice/diode.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_oa/cdslibs/ts18scl/models/default/hspice/accap.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_oa/cdslibs/ts18scl/models/default/hspice/ts18sl_scl_mat.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_oa/cdslibs/ts18scl/models/default/hspice/ts18sl_scl_2019.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_oa/cdslibs/ts18scl/models/default/hspice/ts18sl_scl.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_oa/cdslibs/ts18scl/models/default/hspice/res.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_oa/cdslibs/ts18scl/models/default/hspice/nat.lib
+/opt/sclpdkv3/scl180/pdk/cdn... <result is 4732 characters long and printing is truncated to 4096 characters, use 'puts [command]' to view the entire result>
+@genus:root: 18> exec sh -c {find -L /opt/sclpdkv3/scl180/pdk -type f -iname "*.lib" ! -path "*/hspice/*" ! -path "*/models/*" 2>/dev/null | head -40}
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_oa/etc/system.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_oa/etc/templates/project.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_oa/etc/6.1.5/rfde.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_oa/etc/6.1.4/rfde.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_oa/etc/6.1.0/rfde.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_oa/cdslibs/ts18scl/technology.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_default/cdslibs/ts18scl/technology.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_default/etc/system.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_default/etc/6.1.4/rfde.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_default/etc/6.1.0/rfde.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_default/etc/templates/project.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_default/etc/6.1.5/rfde.lib
+@genus:root: 19> exec sh -c {find -L /opt/sclpdkv3/scl180/pdk -type f \( -iname "*.lib" -o -iname "*.lib.gz" -o -iname "*.db" \) ! -path "*/hspice/*" ! -path "*/etc/*" -print 2>/dev/null | head -60}
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_oa/cdslibs/cds_generic/tech.db
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_oa/cdslibs/ts18scl/technology.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_oa/cdslibs/ts18scl/devices/devices_oa_ts18scl_6M1T/tech.db
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_oa/cdslibs/ts18scl/devices/devices_oa_ts18scl_5M1T/tech.db
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_oa/cdslibs/ts18scl/devices/ts018_oa_compana_6M1T3/current/ref_libs/ts018_scl_prim/tech.db
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_oa/cdslibs/ts18scl/devices/ts018_oa_compana_6M1T3/rev2.0/ref_libs/ts018_scl_prim/tech.db
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_oa/cdslibs/ts18scl/devices/ts018_oa_compana_4M1T3/current/ref_libs/ts018_scl_prim/tech.db
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_oa/cdslibs/ts18scl/devices/ts018_oa_compana_4M1T3/rev2.0/ref_libs/ts018_scl_prim/tech.db
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_oa/cdslibs/ts18scl/devices/ts018_oa_compana_5M1T/current/ref_libs/ts018_scl_prim/tech.db
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_oa/cdslibs/ts18scl/devices/ts018_oa_compana_5M1T/rev2.0/ref_libs/ts018_scl_prim/tech.db
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_oa/cdslibs/ts18scl/devices/devices_oa_ts18scl_5M1T3/tech.db
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_oa/cdslibs/ts18scl/devices/ts018_oa_compana_6M1T/current/ref_libs/ts018_scl_prim/tech.db
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_oa/cdslibs/ts18scl/devices/ts018_oa_compana_6M1T/rev2.0/ref_libs/ts018_scl_prim/tech.db
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_oa/cdslibs/ts18scl/devices/ts018_oa_compana_5M1T3/rev2.0/ref_libs/ts018_scl_prim/tech.db
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_oa/cdslibs/ts18scl/devices/ts018_oa_compana_5M1T3/current/ref_libs/ts018_scl_prim/tech.db
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_oa/cdslibs/ts18scl/devices/ts018_oa_compana_4M1T/rev2.0/ref_libs/ts018_scl_prim/tech.db
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_oa/cdslibs/ts18scl/devices/ts018_oa_compana_4M1T/current/ref_libs/ts018_scl_prim/tech.db
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_oa/cdslibs/ts18scl/devices/devices_oa_ts18scl_6M1T3/tech.db
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_oa/cdslibs/ts18scl/devices/devices_oa_ts18scl_6M1L/tech.db
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_oa/cdslibs/ts18scl/devices/ts018_oa_compana_6M1L/current/ref_libs/ts018_scl_prim/tech.db
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_oa/cdslibs/ts18scl/devices/ts018_oa_compana_6M1L/rev2.0/ref_libs/ts018_scl_prim/tech.db
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_oa/cdslibs/ts18scl/devices/ts018_oa_compana_4M1L/rev2.0/ref_libs/ts018_scl_prim/tech.db
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_oa/cdslibs/ts18scl/devices/ts018_oa_compana_4M1L/current/ref_libs/ts018_scl_prim/tech.db
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_oa/cdslibs/ts18scl/devices/devices_oa_ts18scl_5M1L/tech.db
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_oa/cdslibs/ts18scl/devices/devices_oa_ts18scl_4M1T3/tech.db
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_oa/cdslibs/ts18scl/devices/devices_oa_ts18scl_4M1T/tech.db
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_oa/cdslibs/ts18scl/devices/devices_oa_ts18scl_4M1L/tech.db
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_oa/cdslibs/ts18scl/devices/ts018_oa_compana_5M1L/current/ref_libs/ts018_scl_prim/tech.db
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_oa/cdslibs/ts18scl/devices/ts018_oa_compana_5M1L/rev2.0/ref_libs/ts018_scl_prim/tech.db
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_oa/cdslibs/sheetBorder/tech.db
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_default... <result is 8207 characters long and printing is truncated to 4096 characters, use 'puts [command]' to view the entire result>
+@genus:root: 20> exec sh -c {find -L /opt/sclpdkv3/scl180/pdk -type f -name "*.lib" -exec grep -l "cell[[:space:]]*(" {} \; 2>/dev/null | head -30}
+@genus:root: 21> exec sh -c {find -L /opt/sclpdkv3/scl180/pdk -type f -name "*.lib" -exec grep -l "cell[[:space:]]*(" {} \; 2>/dev/null | head -30}
+@genus:root: 22> exec sh -c {find -L /opt/sclpdkv3/scl180/pdk -type f -iname "*.lib" 2>/dev/null | grep -vi hspice | head -50}
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_oa/etc/system.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_oa/etc/templates/project.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_oa/etc/6.1.5/rfde.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_oa/etc/6.1.4/rfde.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_oa/etc/6.1.0/rfde.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_oa/cdslibs/ts18scl/technology.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_default/cdslibs/ts18scl/technology.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_default/etc/system.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_default/etc/6.1.4/rfde.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_default/etc/6.1.0/rfde.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_default/etc/templates/project.lib
+/opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_default/etc/6.1.5/rfde.lib
+@genus:root: 23> exec sh -c {find -L /opt/sclpdkv3/scl180 -type f \( -iname "*.lib" -o -iname "*.lib.gz" -o -iname "*.db" \) -print 2>/dev/null | grep -Ei 'ts18|slow|typ|fast|liberty|scl' | head -80}
+/opt/sclpdkv3/scl180/iopad/pio520/4M1L/liberty/1.8V-Only/PIO520SL_tt_1p8v_1p8v_25c.lib
+/opt/sclpdkv3/scl180/iopad/pio520/4M1L/liberty/1.8V-Only/PIO520SL_ss_1p62v_1p62v_125c.lib
+/opt/sclpdkv3/scl180/iopad/pio520/4M1L/liberty/1.8V-Only/PIO520SL_ff_1p98v_1p98v_m40c.lib
+/opt/sclpdkv3/scl180/iopad/pio520/4M1L/liberty/5V-Only/PIO520SL_tt_5p0v_5p0v_25c.lib
+/opt/sclpdkv3/scl180/iopad/pio520/4M1L/liberty/5V-Only/PIO520SL_ss_4p5v_4p5v_125c.lib
+/opt/sclpdkv3/scl180/iopad/pio520/4M1L/liberty/5V-Only/PIO520SL_ff_5p5v_5p5v_m40c.lib
+/opt/sclpdkv3/scl180/iopad/pio520/4M1L/liberty/5V-1.8V/PIO520SL_tt_5p0v_1p8v_25c.lib
+/opt/sclpdkv3/scl180/iopad/pio520/4M1L/liberty/5V-1.8V/PIO520SL_ss_4p5v_1p62v_125c.lib
+/opt/sclpdkv3/scl180/iopad/pio520/4M1L/liberty/5V-1.8V/PIO520SL_ff_5p5v_1p98v_m40c.lib
+/opt/sclpdkv3/scl180/iopad/pio520/4M1L/dfii/oa/stack/PIO520SL_4M1L/tech.db
+/opt/sclpdkv3/scl180/iopad/pio520/4M1L/db/1.8V-Only/PIO520SL_tt_1p8v_1p8v_25c.db
+/opt/sclpdkv3/scl180/iopad/pio520/4M1L/db/1.8V-Only/PIO520SL_ss_1p62v_1p62v_125c.db
+/opt/sclpdkv3/scl180/iopad/pio520/4M1L/db/1.8V-Only/PIO520SL_ff_1p98v_1p98v_m40c.db
+/opt/sclpdkv3/scl180/iopad/pio520/4M1L/db/5V-Only/PIO520SL_tt_5p0v_5p0v_25c.db
+/opt/sclpdkv3/scl180/iopad/pio520/4M1L/db/5V-Only/PIO520SL_ss_4p5v_4p5v_125c.db
+/opt/sclpdkv3/scl180/iopad/pio520/4M1L/db/5V-Only/PIO520SL_ff_5p5v_5p5v_m40c.db
+/opt/sclpdkv3/scl180/iopad/pio520/4M1L/db/5V-1.8V/PIO520SL_tt_5p0v_1p8v_25c.db
+/opt/sclpdkv3/scl180/iopad/pio520/4M1L/db/5V-1.8V/PIO520SL_ss_4p5v_1p62v_125c.db
+/opt/sclpdkv3/scl180/iopad/pio520/4M1L/db/5V-1.8V/PIO520SL_ff_5p5v_1p98v_m40c.db
+/opt/sclpdkv3/scl180/iopad/pio520/6M1L/liberty/1.8V-Only/PIO520SL_tt_1p8v_1p8v_25c.lib
+/opt/sclpdkv3/scl180/iopad/pio520/6M1L/liberty/1.8V-Only/PIO520SL_ss_1p62v_1p62v_125c.lib
+/opt/sclpdkv3/scl180/iopad/pio520/6M1L/liberty/1.8V-Only/PIO520SL_ff_1p98v_1p98v_m40c.lib
+/opt/sclpdkv3/scl180/iopad/pio520/6M1L/liberty/5V-Only/PIO520SL_tt_5p0v_5p0v_25c.lib
+/opt/sclpdkv3/scl180/iopad/pio520/6M1L/liberty/5V-Only/PIO520SL_ss_4p5v_4p5v_125c.lib
+/opt/sclpdkv3/scl180/iopad/pio520/6M1L/liberty/5V-Only/PIO520SL_ff_5p5v_5p5v_m40c.lib
+/opt/sclpdkv3/scl180/iopad/pio520/6M1L/liberty/5V-1.8V/PIO520SL_tt_5p0v_1p8v_25c.lib
+/opt/sclpdkv3/scl180/iopad/pio520/6M1L/liberty/5V-1.8V/PIO520SL_ss_4p5v_1p62v_125c.lib
+/opt/sclpdkv3/scl180/iopad/pio520/6M1L/liberty/5V-1.8V/PIO520SL_ff_5p5v_1p98v_m40c.lib
+/opt/sclpdkv3/scl180/iopad/pio520/6M1L/dfii/oa/stack/PIO520SL_6M1L/tech.db
+/opt/sclpdkv3/scl180/iopad/pio520/6M1L/db/5V-1.8V/PIO520SL_tt_5p0v_1p8v_25c.db
+/opt/sclpdkv3/scl180/iopad/pio520/6M1L/db/5V-1.8V/PIO520SL_ss_4p5v_1p62v_125c.db
+/opt/sclpdkv3/scl180/iopad/pio520/6M1L/db/5V-1.8V/PIO520SL_ff_5p5v_1p98v_m40c.db
+/opt/sclpdkv3/scl180/iopad/pio520/6M1L/db/1.8V-Only/PIO520SL_tt_1p8v_1p8v_25c.db
+/opt/sclpdkv3/scl180/iopad/pio520/6M1L/db/1.8V-Only/PIO520SL_ss_1p62v_1p62v_125c.db
+/opt/sclpdkv3/scl180/iopad/pio520/6M1L/db/1.8V-Only/PIO520SL_ff_1p98v_1p98v_m40c.db
+/opt/sclpdkv3/scl180/iopad/pio520/6M1L/db/5V-Only/PIO520SL_tt_5p0v_5p0v_25c.db
+/opt/sclpdkv3/scl180/iopad/pio520/6M1L/db/5V-Only/PIO520SL_ss_4p5v_4p5v_125c.db
+/opt/sclpdkv3/scl180/iopad/pio520/6M1L/db/5V-Only/PIO520SL_ff_5p5v_5p5v_m40c.db
+/opt/sclpdkv3/scl180/iopad/cio250/4M1L/liberty/tsl18cio250_min.lib
+/opt/sclpdkv3/scl180/iopad/cio250/4M1L/liberty/tsl18cio250_min.db
+/opt/sclpdkv3/scl180/iopad/cio250/4M1L/liberty/tsl18cio250_max.lib
+/opt/sclpdkv3/scl180/iopad/cio250/4M1L/liberty/tsl18cio250_max.db
+/opt/sclpdkv3/scl180/iopad/cio250/4M1L/symbol/tsl18cio250/pvdi/symbol/pc.db
+/opt/sclpdkv3/scl180/iopad/cio250/4M1L/symbol/tsl18cio250/pvdi/spectre/pc.db
+/opt/sclpdkv3/scl180/iopad/cio250/4M1L/symbol/tsl18cio250/pvdi/hspiceD/pc.db
+/opt/sclpdkv3/scl180/iopad/cio250/4M1L/symbol/tsl18cio250/pvdi/auCdl/pc.db
+/opt/sclpdkv3/scl180/iopad/cio250/4M1L/symbol/tsl18cio250/pv0f/symbol/pc.db
+/opt/sclpdkv3/scl180/iopad/cio250/4M1L/symbol/tsl18cio250/pv0f/spectre/pc.db
+/opt/sclpdkv3/scl180/iopad/cio250/4M1L/symbol/tsl18cio250/pv0f/hspiceD/pc.db
+/opt/sclpdkv3/scl180/iopad/cio250/4M1L/symbol/tsl18cio250/pv0f/auCdl/pc.db
+/opt/sclpdkv3/scl180/iopad/cio250/4M1L/symbol/... <result is 6409 characters long and printing is truncated to 4096 characters, use 'puts [command]' to view the entire result>
+@genus:root: 24> exec sh -c {find -L /opt/sclpdkv3/scl180 -type f -iname "*.lib" -print 2>/dev/null | grep -vi "/iopad/" | grep -Ei "ts18|scl" | head -60}
+/opt/sclpdkv3/scl180/memory/spram/6M1L/SP_SRAM_spram_8192_5/spram_8192_5_max.lib
+/opt/sclpdkv3/scl180/memory/spram/6M1L/SP_SRAM_spram_8192_5/spram_8192_5_min.lib
+/opt/sclpdkv3/scl180/memory/spram/6M1L/SP_SRAM_spram_8192_5/spram_8192_5_typ.lib
+/opt/sclpdkv3/scl180/memory/spram/6M1L/SP_SRAM_spram_8192_32/spram_8192_32_max.lib
+/opt/sclpdkv3/scl180/memory/spram/6M1L/SP_SRAM_spram_8192_32/spram_8192_32_min.lib
+/opt/sclpdkv3/scl180/memory/spram/6M1L/SP_SRAM_spram_8192_32/spram_8192_32_typ.lib
+/opt/sclpdkv3/scl180/memory/spram/6M1L/SP_SRAM_spram_4096_16/spram_4096_16_max.lib
+/opt/sclpdkv3/scl180/memory/spram/6M1L/SP_SRAM_spram_4096_16/spram_4096_16_min.lib
+/opt/sclpdkv3/scl180/memory/spram/6M1L/SP_SRAM_spram_4096_16/spram_4096_16_typ.lib
+/opt/sclpdkv3/scl180/memory/spram/6M1L/SPRAM_64x72/SPRAM_64x72_min.lib
+/opt/sclpdkv3/scl180/memory/spram/6M1L/SPRAM_64x72/SPRAM_64x72_max.lib
+/opt/sclpdkv3/scl180/memory/spram/6M1L/SPRAM_64x48/SPRAM_64x48_min.lib
+/opt/sclpdkv3/scl180/memory/spram/6M1L/SPRAM_64x48/SPRAM_64x48_max.lib
+/opt/sclpdkv3/scl180/memory/spram/6M1L/SPRAM_64x39/SPRAM_64x39_tsl18_memory_min_SP.lib
+/opt/sclpdkv3/scl180/memory/spram/6M1L/SPRAM_64x39/SPRAM_64x39_tsl18_memory_max_SP.lib
+/opt/sclpdkv3/scl180/memory/spram/6M1L/SPRAM_64x32/SPRAM_64x32_min.lib
+/opt/sclpdkv3/scl180/memory/spram/6M1L/SPRAM_64x32/SPRAM_64x32_max.lib
+/opt/sclpdkv3/scl180/memory/spram/6M1L/SPRAM_8192x8/SPRAM_8192x8_typ_SP.lib
+/opt/sclpdkv3/scl180/memory/spram/6M1L/SPRAM_8192x8/SPRAM_8192x8_min_SP.lib
+/opt/sclpdkv3/scl180/memory/spram/6M1L/SPRAM_8192x8/SPRAM_8192x8_max_SP.lib
+/opt/sclpdkv3/scl180/memory/spram/6M1L/SPRAM_8192x36/SPRAM_8192x36_typ_SP.lib
+/opt/sclpdkv3/scl180/memory/spram/6M1L/SPRAM_8192x36/SPRAM_8192x36_min_SP.lib
+/opt/sclpdkv3/scl180/memory/spram/6M1L/SPRAM_8192x36/SPRAM_8192x36_max_SP.lib
+/opt/sclpdkv3/scl180/memory/spram/6M1L/SPRAM_640x24/SPRAM_640x24_typ_SP.lib
+/opt/sclpdkv3/scl180/memory/spram/6M1L/SPRAM_640x24/SPRAM_640x24_min_SP.lib
+/opt/sclpdkv3/scl180/memory/spram/6M1L/SPRAM_640x24/SPRAM_640x24_max_SP.lib
+/opt/sclpdkv3/scl180/memory/spram/6M1L/SPRAM_512x24/SPRAM_512x24_typ_SP.lib
+/opt/sclpdkv3/scl180/memory/spram/6M1L/SPRAM_512x24/SPRAM_512x24_min_SP.lib
+/opt/sclpdkv3/scl180/memory/spram/6M1L/SPRAM_512x24/SPRAM_512x24_max_SP.lib
+/opt/sclpdkv3/scl180/memory/spram/6M1L/SPRAM_4096x72/SPRAM_4096x72_typ_SP.lib
+/opt/sclpdkv3/scl180/memory/spram/6M1L/SPRAM_4096x72/SPRAM_4096x72_min_SP.lib
+/opt/sclpdkv3/scl180/memory/spram/6M1L/SPRAM_4096x72/SPRAM_4096x72_max_SP.lib
+/opt/sclpdkv3/scl180/memory/spram/6M1L/SPRAM_4096x52/SPRAM_4096x52_typ_SP.lib
+/opt/sclpdkv3/scl180/memory/spram/6M1L/SPRAM_4096x52/SPRAM_4096x52_min_SP.lib
+/opt/sclpdkv3/scl180/memory/spram/6M1L/SPRAM_4096x52/SPRAM_4096x52_max_SP.lib
+/opt/sclpdkv3/scl180/memory/spram/6M1L/SPRAM_32x8/SPRAM_32x8_typ_SP.lib
+/opt/sclpdkv3/scl180/memory/spram/6M1L/SPRAM_32x8/SPRAM_32x8_min_SP.lib
+/opt/sclpdkv3/scl180/memory/spram/6M1L/SPRAM_32x8/SPRAM_32x8_max_SP.lib
+/opt/sclpdkv3/scl180/memory/spram/6M1L/SPRAM_2048x36/SPRAM_2048x36_typ_SP.lib
+/opt/sclpdkv3/scl180/memory/spram/6M1L/SPRAM_2048x36/SPRAM_2048x36_min_SP.lib
+/opt/sclpdkv3/scl180/memory/spram/6M1L/SPRAM_2048x36/SPRAM_2048x36_max_SP.lib
+/opt/sclpdkv3/scl180/memory/spram/6M1L/SPRAM_16x4/SPRAM_16x4_typ_SP.lib
+/opt/sclpdkv3/scl180/memory/spram/6M1L/SPRAM_16x4/SPRAM_16x4_min_SP.lib
+/opt/sclpdkv3/scl180/memory/spram/6M1L/SPRAM_16x4/SPRAM_16x4_max_SP.lib
+/opt/sclpdkv3/scl180/memory/spram/6M1L/SPRAM_1024x36/SPRAM_1024x36_typ_SP.lib
+/opt/sclpdkv3/scl180/memory/spram/6M1L/SPRAM_1024x36/SPRAM_1024x36_min_SP.lib
+/opt/sclpdkv3/scl180/memory/spram/6M1L/SPRAM_1024x36/SPRAM_1024x36_max_SP.lib
+/opt/sclpdkv3/scl180/memory/spram/6M1L/SP_SRAM_spram_8192_8/spram_8192_8_max.lib
+/opt/sclpdkv3/scl180/memory/spram/6M1L/SP_SRAM_spram_8192_8/spram_8192_8_min.lib
+/opt/sclpdkv3/scl180/memory/spram/6M1L/SP_SRAM_spram_8192_8/spram_8192_8_typ.lib
+/opt/sclpdkv3/scl180/memory/spram/6M1L/SP_SRAM_spram_8192_7/spram_8192_7_max.lib
+/opt/sclpdkv3/scl180/memory/spram/6M1L/SP_SRAM_spram_8192_7/spram_8192_7_min.lib
+/opt/sclpdkv3/scl180/memory/spram/6M1L/SP_SRAM_spram_8192_7/spra... <result is 4647 characters long and printing is truncated to 4096 characters, use 'puts [command]' to view the entire result>
+X connection to localhost:11.0 broken (explicit kill or server shutdown).
