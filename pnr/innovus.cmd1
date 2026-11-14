@@ -1,0 +1,47 @@
+#######################################################
+#                                                     
+#  Innovus Command Logging File                     
+#  Created on Sat Nov 14 14:09:25 2026                
+#                                                     
+#######################################################
+
+#@(#)CDS: Innovus v20.14-s095_1 (64bit) 04/19/2021 14:41 (Linux 2.6.32-431.11.2.el6.x86_64)
+#@(#)CDS: NanoRoute 20.14-s095_1 NR210411-1939/20_14-UB (database version 18.20.547) {superthreading v2.13}
+#@(#)CDS: AAE 20.14-s018 (64bit) 04/19/2021 (Linux 2.6.32-431.11.2.el6.x86_64)
+#@(#)CDS: CTE 20.14-s027_1 () Apr 13 2021 21:29:07 ( )
+#@(#)CDS: SYNTECH 20.14-s017_1 () Mar 25 2021 13:07:27 ( )
+#@(#)CDS: CPE v20.14-s080
+#@(#)CDS: IQuantus/TQuantus 20.1.1-s460 (64bit) Fri Mar 5 18:46:16 PST 2021 (Linux 2.6.32-431.11.2.el6.x86_64)
+
+set_global _enable_mmmc_by_default_flow      $CTE::mmmc_default
+suppressMessage ENCEXT-2799
+getVersion
+win
+set init_verilog ../synthesis/decoder_register_file_netlist.v
+set init_top_cell decoder_register_file
+set init_lef_file {/opt/sclpdkv3/scl180/stdcell/fs120/6M1L/lef/scl18fs120_tech.lef /opt/sclpdkv3/scl180/stdcell/fs120/6M1L/lef/scl18fs120_std.lef}
+set init_pwr_net VDD
+set init_gnd_net VSS
+set init_mmmc_file mmmc.view
+init_design
+floorPlan -site CoreSite -r 1.0 0.7 10 10 10 10
+globalNetConnect VDD -type pgpin -pin VDD -inst *
+globalNetConnect VSS -type pgpin -pin VSS -inst *
+addRing -nets {VDD VSS} -type core_rings -layer {top M6 bottom M6 left M5 right M5} -width 2 -spacing 1 -offset 2
+sroute -connect corePin -nets {VDD VSS}
+place_opt_design
+ccopt_design
+routeDesign
+streamOut decoder_register_file.gds -mapFile /opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_oa/cdsware/layout/bin/skill/rdsLayMapping.ile -libName DesignLib -units 1000 -mode ALL
+report_timing > post_route_timing.rpt
+report_area > post_route_area.rpt
+report_power > post_route_power.rpt
+saveDesign decoder_register_file_routed.enc
+setDrawView fplan
+setDrawView fplan
+setDrawView fplan
+setDrawView fplan
+fit
+setDrawView ameba
+setDrawView place
+streamOut decoder_register_file.gds -mapFile /opt/sclpdkv3/scl180/pdk/cdns/sclpdk_v3/HOTCODE/amslibs/cds_oa/cdsware/layout/bin/skill/rdsLayMapping.ile -libName DesignLib -units 1000 -mode ALL
